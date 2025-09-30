@@ -7,6 +7,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -14,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 
 @Composable
 fun LoginScreen(vm: LoginViewModel) {
+    val bananaText = vm.banana.collectAsState()
     Column(modifier = Modifier.fillMaxSize().background(color = Color.Red),
         horizontalAlignment = Alignment.CenterHorizontally) {
 
@@ -23,7 +25,7 @@ fun LoginScreen(vm: LoginViewModel) {
 
         )
         TextField(
-            value = "banana",
+            value = bananaText.value,
             onValueChange = {}
         )
         TextField(
@@ -31,9 +33,9 @@ fun LoginScreen(vm: LoginViewModel) {
             onValueChange = {}
         )
         Button(
-            onClick = {}
+            onClick = { vm.doStuff() }
         ) {
-            Text("sign in")
+            Text("click me")
         }
     }
 
